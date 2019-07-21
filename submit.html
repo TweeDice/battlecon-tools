@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .freebirdFormviewerViewItemsItemRequiredAsterisk {
+            color: #d93025;
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+
+        .freebirdFormviewerViewFormCard {
+            background-color: #fff;
+            margin-bottom: 48px;
+            -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+            padding-bottom: 6px;
+            word-wrap: break-word;
+        }
+
+        .row {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+        }
+
+        #bodyMain {
+            background-color: #E4F3E5;
+          }
+
+        .radio {
+            margin-left: 10px;
+        }
+
+        .formLabel {
+            padding-top: 10px;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+        }
+    </style>
+    <title>Battlecon Tools - Submit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body id="bodyMain">
+    <div class="container freebirdFormviewerViewFormCard">
+        <div class="row">
+            <div ng-app="formApp" ng-controller="btlcnForm" ng-cloak="">
+                <h1>BattleCON Playtest Data</h1>
+                <h2>Submitions not working yet!</h2>
+                <div>
+                    <label class="formLabel" for="discord">Discord User Name:</label><span
+                        class="freebirdFormviewerViewItemsItemRequiredAsterisk" aria-label="Required question">*</span>
+                    <div class="col-sm-6">
+                        <input ng-required="required" type="text" id="discord" class="form-control"
+                            ng-model="discord_name" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="formLabel" for="bcoPin">Your BCO Pin Number:</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="bcoPin" class="form-control" ng-model="bco_pin" />
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="oppBcoPin">Opponent's BCO Pin Number:</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="oppBcoPin" class="form-control" ng-model="opp_bco_pin" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="fighter">Your Fighter:</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <select>
+                                <option ng-required="required" ng-model="ng_fighter" id="fighter"
+                                    ng-repeat="x in fighters">
+                                    {{name.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="opp_fighter">Opponent's Fighter:</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <select>
+                                <option ng-required="required" ng-model="ng_opp_fighter" id="opp_fighter"
+                                    ng-repeat="name in fighters">{{name.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="winnerVar">Who Won:</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <form ng-required="required">
+                                <input type="radio" ng-model="winnerVar" value="self">I Did
+                                <input type="radio" ng-model="winnerVar" value="opponent" class="radio">Opponent
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="life">Your Life Total:</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <input ng-required="required" type="number" id="life" class="form-control"
+                                ng-model="lifeVar" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="opp_life">Opponent's Life Total:</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <input ng-required="required" type="number" id="opp_life" class="form-control"
+                                ng-model="opp_lifeVar" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="joy">Did you enjoy playing as your fighter?</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <select>
+                                <option ng-required="required" ng-model="joyVar" id="joy" ng-repeat="x in scale" value="{{scale.id}}">{{x.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="opp_joy">Did you enjoy playing against the opponent's
+                            fighter?</label><span class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <select>
+                                <option ng-required="required" ng-model="opp_joyVar" id="opp_joy"
+                                    ng-repeat="x in scale" value="{{scale.id}}">{{x.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel">How many games of BattleCON have you played? </label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <form ng-required="required">
+                                <input type="radio" ng-model="games_played" value="1-20">1-20
+                                <input type="radio" ng-model="games_played" value="21-99" class='radio'>21-99
+                                <input type="radio" ng-model="games_played" value="100+" class='radio'>100+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="balance">Did you feel anything about either of the fighters were
+                            unbalanced? (Please leave
+                            Blank if not)</label><span class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <input type="number" id="balance" class="form-control" ng-model="balanceVar" /> </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="rules">Were there any effects or interactions you felt were
+                            confusing or you didn't know how
+                            they resolved? (Please leave Blank if not)</label><span
+                            class="freebirdFormviewerViewItemsItemRequiredAsterisk"
+                            aria-label="Required question">*</span>
+                        <div class="col-sm-6">
+                            <input type="number" id="rules" class="form-control" ng-model="rulesVar" /> </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="errors">Did you notice any errors on the cards? (Please leave
+                            Blank if not)</label>
+                        <div class="col-sm-6">
+                            <input type="number" id="errors" class="form-control" ng-model="errorsVar" /> </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="formLabel" for="thoughts">Any other thoughts?</label>
+                        <div class="col-sm-6">
+                            <input type="number" id="thoughts" class="form-control" ng-model="thoughtsVar" />
+                        </div>
+                    </div>
+
+                    <button type="submit" ng-click='submitForm()' class="btn btn-primary">Submit</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.19/angular-material.min.js"></script>
+
+        <script src="submit.js"></script>
+
+</body>
+
+</html>

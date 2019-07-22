@@ -131,6 +131,7 @@
       font-size: 23px;
       background-color: #4285F4;
       color: white;
+      text-align: center;
     }
 
     .green {
@@ -169,6 +170,11 @@
     .forceIcon {
       font-size: 30px;
     }
+
+    .bonusSelected {
+      border-style: groove;
+      border-color: red;
+    }
   </style>
   <title>Battlecon Tools</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -196,15 +202,21 @@
             <span class="force">Force: {{GAME_RECORD['current_beat_rec']['player_1']['force']}}</span>
           </div>
           <div class='bonuses'>
-            <button class="gameBtn speed bonus" ng-click="speed_up('1')" ng-disabled=speed_up_p1_dis>
+            <button class="gameBtn speed bonus"
+              ng-class="{'bonusSelected' : GAME_RECORD['current_beat_rec']['player_1']['speed_up']}"
+              ng-click="speed_up('1')" ng-disabled=speed_up_p1_dis>
               <div class='forceIconDiv'><i class="fas fa-angle-double-right forceIcon"></i></div>
               <div class='forceText'>{{speed_up_p1}}</div>
             </button>
-            <button class="gameBtn power bonus" ng-click="power_up('1')" ng-disabled=power_up_p1_dis>
+            <button class="gameBtn power bonus"
+              ng-class="{'bonusSelected' : GAME_RECORD['current_beat_rec']['player_1']['power_up']}"
+              ng-click="power_up('1')" ng-disabled=power_up_p1_dis>
               <div class='forceIconDiv'><i class='fas fa-fist-raised forceIcon'></i></div>
               <div class='forceText'>{{power_up_p1}}</div>
             </button>
-            <button class="gameBtn defence bonus" ng-click="defense_up('1')" ng-disabled=defense_up_p1_dis>
+            <button class="gameBtn defence bonus"
+              ng-class="{'bonusSelected' : GAME_RECORD['current_beat_rec']['player_1']['defence_up']}"
+              ng-click="defense_up('1')" ng-disabled=defense_up_p1_dis>
               <div class='forceIconDiv'><i class="fas fa-shield-alt forceIcon"></i></div>
               <div class='forceText'>{{defense_up_p1}}</div>
             </button>
@@ -216,59 +228,64 @@
         <div id="midleBar">
           <button class="gameBtn fa fa-recycle" id="recycle" ng-click="recycle()"><span
               class="faText">Recycle</span></button>
-          <button class="gameBtn fa fa-stop-circle" id="reset" ng-click="reset_btn()"><span
-              class="faText">Reset</span></button>
+          <button class="gameBtn fa fa-stop-circle" id="reset" ng-click="reset_btn()"><span class=""></span></button>
         </div>
 
         <div id="player_2" class="playerSpace">
 
-          <div class="vitals">
-            <div class="vitalsInner">
-              <button class="gameBtn damage" ng-click="btn_life_mod('2', 'damage')">Damage</button>
-              <span class="life">{{GAME_RECORD['current_beat_rec']['player_2']['life']}}</span>
-              <button class="gameBtn heal" ng-click="btn_life_mod('2', 'heal')">Heal</button>
-            </div>
+        <div class="vitals">
+          <div class="vitalsInner">
+            <button class="gameBtn damage" ng-click="btn_life_mod('2', 'damage')">Damage</button>
+            <span class="life">{{GAME_RECORD['current_beat_rec']['player_2']['life']}}</span>
+            <button class="gameBtn heal" ng-click="btn_life_mod('2', 'heal')">Heal</button>
           </div>
-          <div class='forceHolder'>
-            <button class="gameBtn extra_force" ng-click="extra_force('2')"
-              ng-disabled=extra_force_p2_dis>{{extra_force_p2}}</button>
-            <span class="force">Force: {{GAME_RECORD['current_beat_rec']['player_2']['force']}}</span>
-          </div>
-          <div class='bonuses'>
-            <button class="gameBtn speed bonus" ng-click="speed_up('2')" ng-disabled=speed_up_p2_dis>
-              <div class='forceIconDiv'><i class="fas fa-angle-double-right forceIcon"></i></div>
-              <div class='forceText'>{{speed_up_p2}}</div>
-            </button>
-            <button class="gameBtn power bonus" ng-click="power_up('2')" ng-disabled=power_up_p2_dis>
-              <div class='forceIconDiv'><i class='fas fa-fist-raised forceIcon'></i></div>
-              <div class='forceText'>{{power_up_p2}}</div>
-            </button>
-            <button class="gameBtn defence bonus" ng-click="defense_up('2')" ng-disabled=defense_up_p2_dis>
-              <div class='forceIconDiv'><i class="fas fa-shield-alt forceIcon"></i></div>
-              <div class='forceText'>{{defense_up_p2}}</div>
-            </button>
-          </div>
-          <div class='ultDiv'>
-            <button class="gameBtn ult" ng-click="ult('2')" ng-disabled='ult_p2_dis'>Ultimate!</button></div>
         </div>
-
-        <div id='submitDiv'>
-          <button id='submit' class="btn-primary" onclick="window.location='submit.html';">Submit</button>
+        <div class='forceHolder'>
+          <button class="gameBtn extra_force" ng-click="extra_force('2')"
+            ng-disabled=extra_force_p2_dis>{{extra_force_p2}}</button>
+          <span class="force">Force: {{GAME_RECORD['current_beat_rec']['player_2']['force']}}</span>
         </div>
+        <div class='bonuses'>
+          <button class="gameBtn speed bonus"
+            ng-class="{'bonusSelected' : GAME_RECORD['current_beat_rec']['player_2']['speed_up']}"
+            ng-click="speed_up('2')" ng-disabled=speed_up_p2_dis>
+            <div class='forceIconDiv'><i class="fas fa-angle-double-right forceIcon"></i></div>
+            <div class='forceText'>{{speed_up_p2}}</div>
+          </button>
+          <button class="gameBtn power bonus"
+            ng-class="{'bonusSelected' : GAME_RECORD['current_beat_rec']['player_2']['power_up']}"
+            ng-click="power_up('2')" ng-disabled=power_up_p2_dis>
+            <div class='forceIconDiv'><i class='fas fa-fist-raised forceIcon'></i></div>
+            <div class='forceText'>{{power_up_p2}}</div>
+          </button>
+          <button class="gameBtn defence bonus"
+            ng-class="{'bonusSelected' : GAME_RECORD['current_beat_rec']['player_2']['defence_up']}"
+            ng-click="defense_up('2')" ng-disabled=defense_up_p2_dis>
+            <div class='forceIconDiv'><i class="fas fa-shield-alt forceIcon"></i></div>
+            <div class='forceText'>{{defense_up_p2}}</div>
+          </button>
+        </div>
+        <div class='ultDiv'>
+          <button class="gameBtn ult" ng-click="ult('2')" ng-disabled='ult_p2_dis'>Ultimate!</button></div>
       </div>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.19/angular-material.min.js"></script>
-
-      <!-- <script src="{{url_for('static', filename='main.js')}}"></script> -->
-      <script src="index.js"></script>
+      <div id='submitDiv'>
+        <button id='submit' class="btn-primary" onclick="window.location='submit.html';">Submit</button>
+      </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.19/angular-material.min.js"></script>
+
+    <!-- <script src="{{url_for('static', filename='main.js')}}"></script> -->
+    <script src="index.js"></script>
+  </div>
 </body>
 
 </html>

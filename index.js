@@ -346,8 +346,8 @@ app.controller('btlcn', function ($scope) {
         $scope.defense_up_p1_dis = ($scope.GAME_RECORD['current_beat_rec']['player_1']['force'] < 2 && $scope.GAME_RECORD['current_beat_rec']['player_1']['defense_up'] == false);
         $scope.defense_up_p2_dis = ($scope.GAME_RECORD['current_beat_rec']['player_2']['force'] < 2 && $scope.GAME_RECORD['current_beat_rec']['player_2']['defense_up'] == false);
 
-        $scope.extra_force_p1_dis = !$scope.GAME_RECORD.player_1_alt_used;
-        $scope.extra_force_p2_dis = !$scope.GAME_RECORD.player_2_alt_used;
+        $scope.extra_force_p1_dis = $scope.GAME_RECORD.player_1_alt_used;
+        $scope.extra_force_p2_dis = $scope.GAME_RECORD.player_2_alt_used;
 
         if (($scope.GAME_RECORD['current_beat_rec']['player_1']['force'] >= $scope.GAME_RECORD['current_beat_rec']['player_1']['life']) && $scope.GAME_RECORD.player_1_alt_used == false) {
             $scope.ult_p1_dis = false
